@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/07 15:57:40 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/08 10:54:24 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,12 @@ typedef enum e_error
 }	t_error;
 
 //structs
+typedef struct	s_pos
+{
+	int	x;
+	int y;
+}	t_pos;
+
 typedef struct	s_map
 {
 	int		width;
@@ -52,17 +58,13 @@ typedef struct	s_map
 
 typedef struct	s_game
 {
+	int		coins;
+	t_pos	player_pos;
 	void	*mlx;
 	void	*win;
 	void	*img[IMG_COUNT];
 	t_map	map;
 }	t_game;
-
-typedef struct	s_pos
-{
-	int	x;
-	int y;
-}	t_pos;
 
 //functions
 int	exit_ok(void *param);

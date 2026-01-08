@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 14:38:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/05 11:58:25 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/08 14:30:52 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ static int	check_set(t_map *map)
 		{
 			if (c != '0' || c != '1' || c != 'P' || c != 'C' || c != 'E')
 				return (1);
+			x++;
 		}
 		y++;
 	}

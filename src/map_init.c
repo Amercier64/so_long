@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 15:17:28 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/07 16:24:36 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/08 14:30:52 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static t_list	*get_rows(t_game *game, int fd);
 static char	**get_matrix(t_game *game, t_list *rows);
 
-t_error map_init(int fd, t_game *game)
+t_error map_init(t_game *game, int fd)
 {
 	t_list	*rows;
 
@@ -24,28 +24,53 @@ t_error map_init(int fd, t_game *game)
 	if (!rows)
 		return (ERR_MAP_INIT);
 	game->map.matrix = get_matrix(game, rows);
-	if (!game->map.matrix || !check_map(game->map))
+	if (!game->map.matrix)
 		return (ERR_MAP_INIT);
-	ft_lstclear_nodes(&rows);
-	return (SUCCESS);
+	return (check_map(game));
 }
 
-t_error check_map(t_map map)
+static t_error check_map(t_game)
 {
-	
+	int		x;
+	int		y;
+	bool	check_flag;
+
+	y = 0;
+	check_flag = 1;
+	while (y < map.height)
+	{
+		x = 0;
+		while (x < map.width)
+		{
+			if (!check_flag)
+				return (ERR_MAP_INIT);
+			if (check_flag && (y == 0 || y == map.height - 1))
+				check_flag = (map.matrix[y][x] == '1');
+			else if ()
+			{
+				check_flag = check_cell(map.matrix[y][x]);
+			}
+			x++;
+		}
+	}
 }
 
 static char	**get_matrix(t_game *game, t_list *rows)
 {
-	int	y;
+	int		y;
+	t_list	*tmp;
 
 	y = 0;
 	game->map.matrix = malloc(sizeof(char *) * map.height);
-	if (!game->map.arr)
+	if (!game->map.matrix)
 		return error_map_init(rows, NULL, ERR_ALLOC);
 	while (y < map.height)
 	{
-		
+		game->map.matrix[y] = rows->content;
+		tmp = rows->next;
+		free(rows);
+		rows = tmp;
+		y++;
 	}
 }
 
