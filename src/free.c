@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 16:57:54 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/05 11:07:59 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/10 16:36:26 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,4 +22,3 @@ void	free_map(t_map *map)
 	free(map);
 	return;
 }
-

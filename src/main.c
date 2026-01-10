@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:02:50 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/06 19:58:27 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:37:00 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,47 +16,36 @@ int main(int argc, char **argv)
 {
 	if (argc != 2)
 	{
-		perror("Error\nWrong number of args");
+		ft_printf("Error\nWrong number of args\n");
 		return (1);
 	}
-
-	// init
-	//
-	// init events -> <esc> [loop_end]
-	//
-	// loop
-	//
-	//
-	// free
-	// free
-	// free
-
-
-	int *ptr1 = NULL;
-	int *ptr2 = NULL;
-
-
-	if (ptr1)
-		free(ptr1);
-	if (ptr2)
-		free(ptr2);
-
-
-
-	(void)argv;
-}
-
-
-
-struct Window {
+	t_game game;
+	int fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+	{
+		perror("Error\n");
+		return (1);
+	}
+	t_error errcode = game_init(&game, fd);
+	if (errcode != SUCCESS)
+	{
+		print_error(errcode);
+		return (1);
+	}
 	int x;
-	int *ptr;
-	int *ptr1;
-}
-
-destroy_window(window *window) {
-	if (ptr1)
-		free(ptr1);
-	if (ptr2)
-		free(ptr2);
+	int y = 0;
+	while (y < game.map.height)
+	{
+		x = 0;
+		while (x < game.map.width)
+		{
+			ft_printf("%c", game.map.matrix[y][x]);
+			x++;
+		}
+		ft_printf("\n");
+		y++;
+	}
+	ft_printf("game coins : %d\n", game.game_data.coin);
+	ft_printf("Player pos : x=%d y=%d\n", game.game_data.player_pos.x, game.game_data.player_pos.y);
+	ft_printf("game exit : %d\n", game.game_data.exit);
 }

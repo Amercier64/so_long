@@ -6,7 +6,7 @@
 /*   By: amercier <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/02 13:42:50 by amercier          #+#    #+#             */
-/*   Updated: 2025/11/03 11:37:38 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/10 17:07:51 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_lstclear(t_list **lst, void (*del)(void*))
 {
-	if (lst == NULL || *lst == NULL || del == NULL)
+	if (lst == NULL || *lst == NULL)
 		return ;
 	if ((*lst)->next == NULL)
 	{
