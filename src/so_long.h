@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/10 16:49:20 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:16:06 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,9 +37,10 @@
 typedef enum e_error
 {
 	SUCCESS = 0,
-	ERR_MAP_INIT,
+	ERR_ALLOC,
 	ERR_MAP_SHAPE,
-	ERR_ALLOC
+	ERR_MAP_UNCOMPLETE,
+	ERR_MAP_INIT
 }	t_error;
 
 //structs
@@ -49,12 +50,12 @@ typedef struct	s_pos
 	int y;
 }	t_pos;
 
-typedef struct	s_game_data
+typedef struct	s_data
 {
-	bool	exit;
-	int		coin;
-	t_pos	player_pos;
-}	t_game_data;
+	void		*mlx;
+	void		*win;
+	void		*img[IMG_COUNT];
+}	t_data;
 
 typedef struct	s_map
 {
@@ -65,18 +66,21 @@ typedef struct	s_map
 
 typedef struct	s_game
 {
-	void		*mlx;
-	void		*win;
-	void		*img[IMG_COUNT];
-	t_map		map;
-	t_game_data	game_data;
+	bool	exit;
+	int		coin;
+	t_pos	player_pos;
+	t_map	map;
+	t_data	data;
 }	t_game;
 
 //functions
-int	exit_ok(void *param);
-t_error map_init(t_game *game, int fd);
-void	print_error(t_error errcode);
-void	*error_map_init(t_list	*lst, void *ptr, t_error errcode);
 t_error	game_init(t_game *game, int fd);
+t_error map_init(t_game *game, int fd);
+t_error check_map(t_game *game);
+void	free_rows(t_list **rows, char *row);
+void	free_game(t_game game);
+void	free_map(t_map map);
+void	print_error(t_error errcode);
+int		exit_ok(void *param);
 
 #endif

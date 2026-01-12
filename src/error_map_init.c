@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 09:37:49 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/10 17:20:02 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:09:36 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,15 @@
 
 void	print_error(t_error errcode)
 {
+	ft_printf("Error\n");
 	if (errcode == ERR_MAP_SHAPE)
-		ft_printf("Error\nWrong map shape.");
+		ft_printf("Wrong map shape.");
 	if (errcode == ERR_ALLOC)
-		perror("Error\nFailed memory allocation");
+		perror("Failed memory allocation");
+	if (errcode == ERR_MAP_UNCOMPLETE)
+		ft_printf("Map missing player, coin or exit.");
 	if (errcode == ERR_MAP_INIT)
-		ft_printf("Error\nMap initialisation failed.");
-}
-
-void	*error_map_init(t_list	*lst, void *ptr, t_error errcode)
-{
-	ft_lstclear(&lst, free);
-	free(ptr);
-	print_error(errcode);
-	return (NULL);
+		ft_printf("Map initialisation failed. Must be enclosed.\
+				Must contain the following characters '01CEP'.\n\
+				Cannot contain more than 1 E or P");
 }

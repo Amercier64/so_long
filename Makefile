@@ -1,10 +1,11 @@
 src_dir := src
 
 src := main.c \
-	   exit_prog.c \
-	   map_init.c \
-	   error_map_init.c \
 	   game_init.c \
+	   map_init.c \
+	   map_check.c \
+	   error_map_init.c \
+	   free.c \
 
 obj_dir := obj
 

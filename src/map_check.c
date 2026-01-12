@@ -6,58 +6,58 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 14:38:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/08 14:30:52 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 10:34:34 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	check_map(t_map *map)
-{
-	check_size;
-	check_set;
-	check_struct
-	{
-		check_firstandlast_rows;
-		check_firstandlast_columns;
-	}
-	check_lab
-	{
-		check_path_PtoC; loop while C;
-		check_path_PtoE;
-	}
-}
+static bool	set_game_data(t_game *game, int x, int y);
 
-//static check_size(t_map *map)
-//{
-//	int	y;
-//
-//	y = 0;
-//	while(y < map->height)
-//	{
-//		if (ft_strlen(map->map[y]) != map->width)
-//			return (1);
-//		y++;
-//	}
-//	return (0);
-//}
-
-static int	check_set(t_map *map)
+t_error check_map(t_game *game)
 {
-	int x;
-	int y;
+	int		x;
+	int		y;
+	bool	check_flag;
 
 	y = 0;
-	while (y < map->height)
+	check_flag = 1;
+	while (y < game->map.height)
 	{
 		x = 0;
-		while (x < map->width)
+		while (x < game->map.width)
 		{
-			if (c != '0' || c != '1' || c != 'P' || c != 'C' || c != 'E')
-				return (1);
+			if (x * y == 0 || x == game->map.width - 1 ||
+					y == game->map.height - 1)
+				check_flag = (game->map.matrix[y][x] == '1');
+			else
+				check_flag = set_game_data(game, x, y);
+			if (!check_flag)
+				return (ERR_MAP_INIT);
 			x++;
 		}
 		y++;
 	}
-	return (0);
+	if (game->player_pos.x == 0 || game->coin == 0 || game->exit == 0)
+		return (ERR_MAP_UNCOMPLETE);
+	return (SUCCESS);
+}
+
+static bool	set_game_data(t_game *game, int x, int y)
+{
+	char	c;
+
+	c = game->map.matrix[y][x];
+	if (c == 'P' && game->player_pos.x == 0)
+	{
+		game->player_pos.x = x;
+		game->player_pos.y = y;
+	}
+	else if (c == 'C')
+		game->coin++;
+	else if (c == 'E' && !game->exit)
+		game->exit = 1;
+	else if (c != '0' && c != '1')
+		return (0);
+	return (1);
 }

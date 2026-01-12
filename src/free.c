@@ -6,19 +6,34 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 16:57:54 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/10 16:36:26 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:17:49 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	free_map(t_map *map)
+void	free_game(t_game game)
+{
+	free_map(game.map);
+}
+
+
+void	free_map(t_map map)
 {
 	int	y;
 
 	y = 0;
-	while (y < map->height)
-		free(map->map[y]);
-	free(map);
-	return;
+	while (y < map.height)
+	{
+		free(map.matrix[y]);
+		y++;
+	}
+	ft_printf("%d\n", y);
+	free(map.matrix);
+}
+
+void	free_rows(t_list **rows, char *row)
+{
+	ft_lstclear(rows, free);
+	free(row);
 }

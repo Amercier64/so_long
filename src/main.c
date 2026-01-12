@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:02:50 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/10 17:37:00 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 12:19:04 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	t_error errcode = game_init(&game, fd);
-	if (errcode != SUCCESS)
+	if (errcode)
 	{
 		print_error(errcode);
 		return (1);
@@ -45,7 +45,8 @@ int main(int argc, char **argv)
 		ft_printf("\n");
 		y++;
 	}
-	ft_printf("game coins : %d\n", game.game_data.coin);
-	ft_printf("Player pos : x=%d y=%d\n", game.game_data.player_pos.x, game.game_data.player_pos.y);
-	ft_printf("game exit : %d\n", game.game_data.exit);
+	ft_printf("game coins : %d\n", game.coin);
+	ft_printf("Player pos : x=%d y=%d\n", game.player_pos.x, game.player_pos.y);
+	ft_printf("game exit : %d\n", game.exit);
+	free_game(game);
 }

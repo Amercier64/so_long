@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:13:23 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/10 17:20:46 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/12 09:29:52 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 t_error	game_init(t_game *game, int fd)
 {
-	game->game_data.coin = 0;
-	game->game_data.player_pos.x = 0;
-	game->game_data.exit = 0;
+	game->coin = 0;
+	game->player_pos.x = 0;
+	game->exit = 0;
 
 	/*
 	 * game->mlx = mlx_init();
