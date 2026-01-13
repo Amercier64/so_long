@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 15:17:28 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/12 12:24:37 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:15:48 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ t_error map_init(t_game *game, int fd)
 		errcode = get_matrix(game, rows);
 	if (!errcode)
 	{
-		errcode = check_map(game);
+		errcode = map_check(game);
 		if (errcode)
 			free_map(game->map);
 	}

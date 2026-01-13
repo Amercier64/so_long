@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 14:38:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/12 10:34:34 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:38:31 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	set_game_data(t_game *game, int x, int y);
 
-t_error check_map(t_game *game)
+t_error map_check(t_game *game)
 {
 	int		x;
 	int		y;
@@ -38,7 +38,7 @@ t_error check_map(t_game *game)
 		}
 		y++;
 	}
-	if (game->player_pos.x == 0 || game->coin == 0 || game->exit == 0)
+	if (game->player.x == 0 || game->coin == 0 || game->exit == 0)
 		return (ERR_MAP_UNCOMPLETE);
 	return (SUCCESS);
 }
@@ -48,10 +48,10 @@ static bool	set_game_data(t_game *game, int x, int y)
 	char	c;
 
 	c = game->map.matrix[y][x];
-	if (c == 'P' && game->player_pos.x == 0)
+	if (c == 'P' && game->player.x == 0)
 	{
-		game->player_pos.x = x;
-		game->player_pos.y = y;
+		game->player.x = x;
+		game->player.y = y;
 	}
 	else if (c == 'C')
 		game->coin++;

@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:13:23 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/12 09:29:52 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/13 17:38:48 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 t_error	game_init(t_game *game, int fd)
 {
 	game->coin = 0;
-	game->player_pos.x = 0;
+	game->player.x = 0;
 	game->exit = 0;
 
 	/*

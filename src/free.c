@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 16:57:54 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/12 12:17:49 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/13 14:18:24 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	free_map(t_map map)
 		free(map.matrix[y]);
 		y++;
 	}
-	ft_printf("%d\n", y);
 	free(map.matrix);
 }
 
