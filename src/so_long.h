@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/13 17:37:02 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/14 15:19:22 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,8 @@ typedef enum e_error
 	ERR_ALLOC,
 	ERR_MAP_SHAPE,
 	ERR_MAP_UNCOMPLETE,
-	ERR_MAP_INIT
+	ERR_MAP_INIT,
+	ERR_MAP_LAB
 }	t_error;
 
 //structs
@@ -77,6 +78,7 @@ typedef struct	s_game
 t_error	game_init(t_game *game, int fd);
 t_error map_init(t_game *game, int fd);
 t_error map_check(t_game *game);
+t_error	lab_check(t_game *game);
 void	free_rows(t_list **rows, char *row);
 void	free_game(t_game game);
 void	free_map(t_map map);

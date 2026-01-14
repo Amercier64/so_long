@@ -4,7 +4,9 @@ src := main.c \
 	   game_init.c \
 	   map_init.c \
 	   map_check.c \
-	   error_map_init.c \
+	   lab_check.c \
+	   print_error.c \
+	   exit_prog.c \
 	   free.c \
 
 obj_dir := obj
@@ -29,7 +31,7 @@ LDLIBS := -lXext -lX11 -lm -lz -lmlx_Linux -lftprintf
 
 all: $(NAME)
 
-$(NAME): $(lib) $(obj)
+$(NAME): $(obj) $(lib)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(obj) $(LDLIBS) -o $@ 
 
 $(obj_dir)/%.o: $(src_dir)/%.c

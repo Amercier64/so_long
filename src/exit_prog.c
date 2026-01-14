@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/01 10:31:38 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/03 13:41:11 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/14 13:02:58 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 int	exit_ok(void *param)
 {
 	t_game *game = param;
-	mlx_destroy_window(game->mlx, game->win);
+	mlx_destroy_window(game->data.mlx, game->data.win);
 	exit(0);
 	return (0);
 }
