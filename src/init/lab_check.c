@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:00:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/14 15:48:47 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/16 16:40:13 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,12 @@ t_error	lab_check(t_game *game)
 	t_error errcode;
 
 	errcode = copy_map(game->map, &lab);
-	if (!errcode)
-	{
-		floodfill(game->map, lab.matrix, game->player.x, game->player.y);
-		if (reachable_count(lab, game->map.matrix) != game->coin + 1)
-			errcode = ERR_MAP_LAB;
-		free_map(lab);
-	}
+	if (errcode)
+		return (errcode);
+	floodfill(game->map, lab.matrix, game->player.x, game->player.y);
+	if (reachable_count(lab, game->map.matrix) != game->coin + 1)
+		errcode = ERR_MAP_LAB;
+	free_map(&lab);
 	return (errcode);
 }
 
@@ -86,7 +85,7 @@ static t_error	copy_map(t_map map, t_map *copy)
 		copy->matrix[y] = malloc(sizeof(char) * copy->width);
 		if (!copy->matrix[y])
 		{
-			free_map(*copy);
+			free_map(copy);
 			return (ERR_ALLOC);
 		}
 		ft_memset(copy->matrix[y], 0, sizeof(char) * copy->width);

@@ -1,13 +1,14 @@
 src_dir := src
 
 src := main.c \
-	   game_init.c \
-	   map_init.c \
-	   map_check.c \
-	   lab_check.c \
 	   print_error.c \
 	   exit_prog.c \
 	   free.c \
+	   $(addprefix init/, \
+		   game_init.c \
+		   map_init.c \
+		   map_check.c \
+		   lab_check.c)
 
 obj_dir := obj
 
@@ -23,7 +24,8 @@ NAME := so_long
 
 CFLAGS := -Wall -Wextra -Werror -g
 
-INCLUDE := -I/usr/include -Ilibs/ft_printf/src -Ilibs/mlx_linux -Ilibs/ft_printf/libft
+INCLUDE := -I/usr/include -Ilibs/ft_printf/src -Ilibs/mlx_linux \
+		   -Ilibs/ft_printf/libft -Isrc
 
 LDFLAGS := -L/usr/lib $(dir $(addprefix -L, $(lib)))
 
