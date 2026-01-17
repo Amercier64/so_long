@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:00:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/16 16:40:13 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/17 17:38:41 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,7 @@ static int reachable_count(t_map lab, char **map)
 
 static void	floodfill(t_map map, char **iscolored, int x, int y)
 {
-	if (x * y == 0 || x == map.width || y == map.height
-			|| iscolored[y][x] || map.matrix[y][x] == '1')
+	if (iscolored[y][x] || map.matrix[y][x] == '1')
 		return;
 	iscolored[y][x] = map.matrix[y][x];
 	floodfill(map, iscolored, x, y - 1);

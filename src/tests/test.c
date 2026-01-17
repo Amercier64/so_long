@@ -36,13 +36,5 @@ typedef struct	s_game
 
 int main()
 {
-	t_game	*game;
-	t_map	*map;
-
-	game = malloc(sizeof(t_game));
-	(void) map;
-	printf("game: %p\n", game);
-	printf("game.map: %p\n", &(game->map));
-	map = &game->map;
-	printf("map: %p\n", map);
+	close(-1);
 }

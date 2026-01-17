@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 09:37:49 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/16 17:46:34 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/17 15:22:12 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,4 +34,11 @@ void	print_error(t_error errcode)
 				"Cannot contain more than one 'E' or 'P'\n");
 	if (errcode == ERR_MAP_LAB)
 		ft_printf("At least one of the coins or the exit is not reachable\n");
+	if (errcode == ERR_WIN_SIZE)
+		ft_printf("Map size too large for screen resolution\n"
+				"Reduce number of tiles\n");
+	if (errcode == ERR_IMG_LOAD)
+		perror("Failed loading image");
+	if (errcode == ERR_IMG_SIZE)
+		ft_printf("Image size doesn't match TILE_SIZE\n");
 }

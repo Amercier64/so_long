@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:02:50 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/16 16:27:47 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:22:08 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,8 @@ int main(int argc, char **argv)
 		print_error(errcode);
 	else
 	{
-		ft_printf("SUCCESS !\n");
-		free_game(game);
+		game_run(&game);
+		free_game(&game);
 	}
 	return (errcode);
 }

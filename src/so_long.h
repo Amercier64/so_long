@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/16 17:41:29 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/17 18:15:00 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,16 +23,19 @@
 
 //consts
 # define IMG_DIR "textures/"
-# define IMGPATH_COIN "coin.xpm"
-# define IMGPATH_PLAYER "redheart.xpm"
-# define IMGPATH_WALL "wall.xpm"
-# define IMGPATH_EXITLOCKED "hollow_circle.xpm"
-# define IMGPATH_EXITUNLOCKED "full_circle.xpm"
+# define IMGFILE_1		IMG_DIR "wall.xpm"
+# define IMGFILE_C		IMG_DIR "coin.xpm"
+# define IMGFILE_P		IMG_DIR "redheart.xpm"
+# define IMGFILE_ECLOSE	IMG_DIR "full_circle.xpm"
+# define IMGFILE_EOPEN	IMG_DIR "hollow_circle.xpm"
+# define IMG_FILENAMES {IMGFILE_1, IMGFILE_C, \
+		IMGFILE_P, IMGFILE_ECLOSE, IMGFILE_EOPEN}
 # define IMG_COUNT 5
 
+# define WIN_TITLE "so_long"
 # define MAX_RES_WIDTH	1920
 # define MAX_RES_HEIGHT 960
-# define CELL_SIZE		32
+# define TILE_SIZE		32
 
 typedef enum e_error
 {
@@ -44,7 +47,10 @@ typedef enum e_error
 	ERR_MAP_SHAPE,
 	ERR_MAP_UNCOMPLETE,
 	ERR_MAP_INIT,
-	ERR_MAP_LAB
+	ERR_MAP_LAB,
+	ERR_WIN_SIZE,
+	ERR_IMG_LOAD,
+	ERR_IMG_SIZE
 }	t_error;
 
 //structs
@@ -82,8 +88,9 @@ t_error	game_init(t_game *game, char *filename);
 t_error map_init(t_game *game, int fd);
 t_error map_check(t_game *game);
 t_error	lab_check(t_game *game);
+void	game_run(t_game *game);
 void	free_rows(t_list **rows, char *row);
-void	free_game(t_game game);
+void	free_game(t_game *game);
 void	free_map(t_map *map);
 void	print_error(t_error errcode);
 int		exit_ok(void *param);
