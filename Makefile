@@ -2,14 +2,14 @@ src_dir := src
 
 src := main.c \
 	   print_error.c \
-	   exit_prog.c \
 	   free.c \
 	   $(addprefix init/, \
 		   game_init.c \
 		   map_init.c \
 		   map_check.c \
 		   lab_check.c) \
-	   game_run.c
+	   game_run.c \
+	   my_key_hook.c
 
 obj_dir := obj
 

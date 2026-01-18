@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/17 18:15:00 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/18 19:07:58 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,10 @@
 # define IMGFILE_P		IMG_DIR "redheart.xpm"
 # define IMGFILE_ECLOSE	IMG_DIR "full_circle.xpm"
 # define IMGFILE_EOPEN	IMG_DIR "hollow_circle.xpm"
+# define IMGFILE_0		IMG_DIR "background.xpm"
 # define IMG_FILENAMES {IMGFILE_1, IMGFILE_C, \
-		IMGFILE_P, IMGFILE_ECLOSE, IMGFILE_EOPEN}
-# define IMG_COUNT 5
+		IMGFILE_P, IMGFILE_ECLOSE, IMGFILE_EOPEN, IMGFILE_0}
+# define IMG_COUNT 6
 
 # define WIN_TITLE "so_long"
 # define MAX_RES_WIDTH	1920
@@ -78,6 +79,7 @@ typedef struct	s_game
 {
 	bool	exit;
 	int		coin;
+	int		move;
 	t_pos	player;
 	t_map	map;
 	t_data	data;
@@ -89,10 +91,10 @@ t_error map_init(t_game *game, int fd);
 t_error map_check(t_game *game);
 t_error	lab_check(t_game *game);
 void	game_run(t_game *game);
+int		my_key_hook(int keycode, void *param);
 void	free_rows(t_list **rows, char *row);
 void	free_game(t_game *game);
 void	free_map(t_map *map);
 void	print_error(t_error errcode);
-int		exit_ok(void *param);
 
 #endif

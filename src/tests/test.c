@@ -36,5 +36,21 @@ typedef struct	s_game
 
 int main()
 {
-	close(-1);
+	t_game	game;
+	t_pos	pos;
+
+	game.player.x = 10;
+	game.player.y = 20;
+	pos = game.player;
+	printf("x = %d y = %d\n", game.player.x, game.player.y);
+	printf("x = %d y = %d\n", pos.x, pos.y);
+	printf("gp = %p\npos = %p", &game.player, &pos);
+	game.player.x = 33;
+	game.player.y = 77;
+	printf("x = %d y = %d\n", game.player.x, game.player.y);
+	printf("x = %d y = %d\n", pos.x, pos.y);
+	pos.x = 42;
+	pos.y = 68;
+	printf("x = %d y = %d\n", game.player.x, game.player.y);
+	printf("x = %d y = %d\n", pos.x, pos.y);
 }
