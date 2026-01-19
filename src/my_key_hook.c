@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 18:27:34 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/19 13:14:55 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 14:56:18 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,11 @@ int	my_key_hook(int keycode, void *param)
 	game = param;
 	prev_pos = game->player;
 	if (keycode == XK_Escape)
+	{
 		mlx_loop_end(game->data.mlx);
-	if (keycode == XK_w)
+		return (0);
+	}
+	else if (keycode == XK_w)
 		game->player.y -= 1;
 	else if (keycode == XK_s)
 		game->player.y += 1;
@@ -57,9 +60,14 @@ static void	move_player(t_game *game, t_pos prev_pos)
 
 	x = game->player.x;
 	y = game->player.y;
-	mlx_put_image_to_window(game->data.mlx, game->data.win,
-		game->data.img[5], prev_pos.x * TILE_SIZE,
-		prev_pos.y * TILE_SIZE);
+	if (game->map.matrix[prev_pos.y][prev_pos.x] == 'E')
+		mlx_put_image_to_window(game->data.mlx, game->data.win,
+			game->data.img[3], prev_pos.x * TILE_SIZE,
+			prev_pos.y * TILE_SIZE);
+	else
+		mlx_put_image_to_window(game->data.mlx, game->data.win,
+			game->data.img[5], prev_pos.x * TILE_SIZE,
+			prev_pos.y * TILE_SIZE);
 	mlx_put_image_to_window(game->data.mlx, game->data.win,
 		game->data.img[2], game->player.x * TILE_SIZE,
 		game->player.y * TILE_SIZE);
@@ -67,7 +75,7 @@ static void	move_player(t_game *game, t_pos prev_pos)
 	ft_printf("Movements: %d\n", game->move);
 	if (game->map.matrix[y][x] == 'C')
 		game->coin--;
-	else if (game->map.matrix[y][x] == 'E')
+	else if (game->map.matrix[y][x] == 'E' && game->coin == 0)
 	{
 		ft_printf("YOU WON !\n");
 		mlx_loop_end(game->data.mlx);
@@ -81,8 +89,7 @@ static int	move_allowed(t_game *game)
 
 	x = game->player.x;
 	y = game->player.y;
-	if (game->map.matrix[y][x] == '1'
-			|| (game->map.matrix[y][x] == 'E' && game->coin > 0))
+	if (game->map.matrix[y][x] == '1')
 		return (0);
 	return (1);
 }
