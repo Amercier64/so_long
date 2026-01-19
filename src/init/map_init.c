@@ -6,16 +6,16 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 15:17:28 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/16 16:39:32 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:20:44 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-static t_error get_rows(t_map *map, int fd, t_list **rows);
+static t_error	get_rows(t_map *map, int fd, t_list **rows);
 static t_error	get_matrix(t_map *map, t_list *rows);
 
-t_error map_init(t_game *game, int fd)
+t_error	map_init(t_game *game, int fd)
 {
 	t_list	*rows;
 	t_error	errcode;
@@ -32,7 +32,7 @@ t_error map_init(t_game *game, int fd)
 	return (errcode);
 }
 
-static t_error get_rows(t_map *map, int fd, t_list **rows)
+static t_error	get_rows(t_map *map, int fd, t_list **rows)
 {
 	t_list	*tmp;
 	char	*row;

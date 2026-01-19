@@ -6,7 +6,7 @@
 #    By: amercier <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/10/14 14:16:18 by amercier          #+#    #+#              #
-#    Updated: 2026/01/05 15:39:07 by amercier         ###   ########.fr        #
+#    Updated: 2026/01/19 13:03:41 by amercier         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -54,7 +54,6 @@ src = \
 	ft_lstclear_bonus.c \
 	ft_lstiter_bonus.c \
 	ft_lstmap_bonus.c \
-	ft_lstclear_nodes.c \
 	get_next_line.c \
 
 OBJ_DIR := obj

@@ -6,13 +6,13 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/03 17:02:50 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/17 18:22:08 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:15:04 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_game	game;
 	t_error	errcode;

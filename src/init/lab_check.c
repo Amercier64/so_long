@@ -6,20 +6,20 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/13 13:00:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/17 17:38:41 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:19:12 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static t_error	copy_map(t_map map, t_map *copy);
-static void	floodfill(t_map map, char **iscolored, int x, int y);
-static int reachable_count(t_map lab, char **map);
+static void		floodfill(t_map map, char **iscolored, int x, int y);
+static int		reachable_count(t_map lab, char **map);
 
 t_error	lab_check(t_game *game)
 {
 	t_map	lab;
-	t_error errcode;
+	t_error	errcode;
 
 	errcode = copy_map(game->map, &lab);
 	if (errcode)
@@ -31,11 +31,11 @@ t_error	lab_check(t_game *game)
 	return (errcode);
 }
 
-static int reachable_count(t_map lab, char **map)
+static int	reachable_count(t_map lab, char **map)
 {
 	int	x;
 	int	y;
-	int count;
+	int	count;
 
 	y = 0;
 	count = 0;
@@ -57,7 +57,7 @@ static int reachable_count(t_map lab, char **map)
 static void	floodfill(t_map map, char **iscolored, int x, int y)
 {
 	if (iscolored[y][x] || map.matrix[y][x] == '1')
-		return;
+		return ;
 	iscolored[y][x] = map.matrix[y][x];
 	floodfill(map, iscolored, x, y - 1);
 	floodfill(map, iscolored, x, y + 1);

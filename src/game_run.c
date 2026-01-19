@@ -6,15 +6,15 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 17:45:17 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/18 18:46:16 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:10:52 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 static int	exit_prog(void *param);
-static void display_map(t_game *game);
-static void *get_img(t_game *game, int x, int y);
+static void	display_map(t_game *game);
+static void	*get_img(t_game *game, int x, int y);
 
 void	game_run(t_game *game)
 {
@@ -29,14 +29,14 @@ void	game_run(t_game *game)
 
 static int	exit_prog(void *param)
 {
-	t_game *game;
+	t_game	*game;
 
 	game = param;
 	mlx_loop_end(game->data.mlx);
 	return (0);
 }
 
-static void display_map(t_game *game)
+static void	display_map(t_game *game)
 {
 	int		x;
 	int		y;
@@ -52,7 +52,7 @@ static void display_map(t_game *game)
 			if (img == NULL)
 			{
 				x++;
-				continue;
+				continue ;
 			}
 			mlx_put_image_to_window(game->data.mlx, game->data.win,
 				img, x * TILE_SIZE, y * TILE_SIZE);
@@ -62,7 +62,7 @@ static void display_map(t_game *game)
 	}
 }
 
-static void *get_img(t_game *game, int x, int y)
+static void	*get_img(t_game *game, int x, int y)
 {
 	void	*img;
 

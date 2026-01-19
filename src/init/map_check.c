@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 14:38:48 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/13 17:38:31 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:20:17 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static bool	set_game_data(t_game *game, int x, int y);
 
-t_error map_check(t_game *game)
+t_error	map_check(t_game *game)
 {
 	int		x;
 	int		y;
@@ -27,8 +27,8 @@ t_error map_check(t_game *game)
 		x = 0;
 		while (x < game->map.width)
 		{
-			if (x * y == 0 || x == game->map.width - 1 ||
-					y == game->map.height - 1)
+			if (x * y == 0 || x == game->map.width - 1
+				|| y == game->map.height - 1)
 				check_flag = (game->map.matrix[y][x] == '1');
 			else
 				check_flag = set_game_data(game, x, y);

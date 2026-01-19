@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/18 19:07:58 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:35:12 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,15 +22,12 @@
 # include <stdlib.h>
 
 //consts
-# define IMG_DIR "textures/"
-# define IMGFILE_1		IMG_DIR "wall.xpm"
-# define IMGFILE_C		IMG_DIR "coin.xpm"
-# define IMGFILE_P		IMG_DIR "redheart.xpm"
-# define IMGFILE_ECLOSE	IMG_DIR "full_circle.xpm"
-# define IMGFILE_EOPEN	IMG_DIR "hollow_circle.xpm"
-# define IMGFILE_0		IMG_DIR "background.xpm"
-# define IMG_FILENAMES {IMGFILE_1, IMGFILE_C, \
-		IMGFILE_P, IMGFILE_ECLOSE, IMGFILE_EOPEN, IMGFILE_0}
+# define IMGFILE_1		"textures/wall.xpm"
+# define IMGFILE_C		"textures/coin.xpm"
+# define IMGFILE_P		"textures/redheart.xpm"
+# define IMGFILE_ECLOSE	"textures/full_circle.xpm"
+# define IMGFILE_EOPEN	"textures/hollow_circle.xpm"
+# define IMGFILE_0		"textures/background.xpm"
 # define IMG_COUNT 6
 
 # define WIN_TITLE "so_long"
@@ -55,27 +52,27 @@ typedef enum e_error
 }	t_error;
 
 //structs
-typedef struct	s_pos
+typedef struct s_pos
 {
 	int	x;
-	int y;
+	int	y;
 }	t_pos;
 
-typedef struct	s_data
+typedef struct s_data
 {
 	void		*mlx;
 	void		*win;
 	void		*img[IMG_COUNT];
 }	t_data;
 
-typedef struct	s_map
+typedef struct s_map
 {
 	int		width;
 	int		height;
 	char	**matrix;
 }	t_map;
 
-typedef struct	s_game
+typedef struct s_game
 {
 	bool	exit;
 	int		coin;
@@ -87,8 +84,8 @@ typedef struct	s_game
 
 //functions
 t_error	game_init(t_game *game, char *filename);
-t_error map_init(t_game *game, int fd);
-t_error map_check(t_game *game);
+t_error	map_init(t_game *game, int fd);
+t_error	map_check(t_game *game);
 t_error	lab_check(t_game *game);
 void	game_run(t_game *game);
 int		my_key_hook(int keycode, void *param);

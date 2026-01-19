@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angouleme.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/04 16:57:54 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/17 18:14:42 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/19 13:12:18 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,13 +31,12 @@ void	free_game(t_game *game)
 	free(game->data.mlx);
 }
 
-
 void	free_map(t_map *map)
 {
 	int	y;
 
 	if (!map->matrix)
-		return;
+		return ;
 	y = 0;
 	while (y < map->height)
 	{
