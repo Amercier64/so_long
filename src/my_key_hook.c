@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 18:27:34 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/19 14:56:18 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/21 15:33:55 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	my_key_hook(int keycode, void *param)
 		game->player.x -= 1;
 	else if (keycode == XK_d)
 		game->player.x += 1;
+	else
+		return (0);
 	update(game, prev_pos);
 	return (0);
 }

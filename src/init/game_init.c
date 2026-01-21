@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/05 16:13:23 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/19 13:40:07 by amercier         ###   ########.fr       */
+/*   Updated: 2026/01/21 16:03:10 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,8 @@ static t_error	win_init(t_game *game)
 
 	win_width = TILE_SIZE * game->map.width;
 	win_height = TILE_SIZE * game->map.height;
-	if (win_width > MAX_RES_WIDTH || win_height > MAX_RES_HEIGHT)
-		return (ERR_WIN_SIZE);
+//	if (win_width > MAX_RES_WIDTH || win_height > MAX_RES_HEIGHT)
+//		return (ERR_WIN_SIZE);
 	game->data.mlx = mlx_init();
 	if (!game->data.mlx)
 		return (ERR_ALLOC);
