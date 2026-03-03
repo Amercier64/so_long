@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 17:45:17 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/19 13:10:52 by amercier         ###   ########.fr       */
+/*   Updated: 2026/03/03 17:26:58 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,14 +68,14 @@ static void	*get_img(t_game *game, int x, int y)
 
 	img = NULL;
 	if (game->map.matrix[y][x] == '1')
-		img = game->data.img[0];
+		img = game->data.img[WALL];
 	else if (game->map.matrix[y][x] == 'C')
-		img = game->data.img[1];
+		img = game->data.img[COIN];
 	else if (game->map.matrix[y][x] == 'P')
-		img = game->data.img[2];
+		img = game->data.img[PLAYER];
 	else if (game->map.matrix[y][x] == 'E')
-		img = game->data.img[3];
+		img = game->data.img[ECLOSE];
 	else if (game->map.matrix[y][x] == '0')
-		img = game->data.img[5];
+		img = game->data.img[EMPTY];
 	return (img);
 }

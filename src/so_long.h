@@ -6,7 +6,7 @@
 /*   By: amercier <amercier@student.42angoulem      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 18:24:02 by amercier          #+#    #+#             */
-/*   Updated: 2026/01/19 13:35:12 by amercier         ###   ########.fr       */
+/*   Updated: 2026/03/03 17:28:54 by amercier         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,13 @@
 # define MAX_RES_WIDTH	1920
 # define MAX_RES_HEIGHT 960
 # define TILE_SIZE		32
+
+# define WALL 0
+# define COIN 1
+# define PLAYER 2
+# define ECLOSE 3
+# define EOPEN 4
+# define EMPTY 5
 
 typedef enum e_error
 {
@@ -89,6 +96,7 @@ t_error	map_check(t_game *game);
 t_error	lab_check(t_game *game);
 void	game_run(t_game *game);
 int		my_key_hook(int keycode, void *param);
+void	update(t_game *game, t_pos prev_pos);
 void	free_rows(t_list **rows, char *row);
 void	free_game(t_game *game);
 void	free_map(t_map *map);
